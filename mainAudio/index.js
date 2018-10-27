@@ -24,7 +24,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-loop();
+section1();
 
 function section1() {
   rl.question('Start section 1?', (answer) => {
