@@ -1,4 +1,4 @@
-const player = require('node-wav-player');
+  const player = require('node-wav-player');
 const readline = require('readline');
 var colors = require('colors');
 var SerialPort = require('serialport');
@@ -26,8 +26,8 @@ const rl = readline.createInterface({
 
 loop();
 
-function loop() {
-  rl.question('Start sequence?', (answer) => {
+function section1() {
+  rl.question('Start section 1?', (answer) => {
     io.emit('start');
     player.stop();
     console.log('Playing...');
@@ -36,24 +36,39 @@ function loop() {
     setTimeout(sendCommand, 8455, '3');
     setTimeout(sendCommandRed, 9455, 'Slam window!');
 
-    setTimeout(sendCommand, 55292, '1');
-    setTimeout(sendCommand, 56292, '2');
-    setTimeout(sendCommand, 57292, '3');
-    setTimeout(sendSerial, 57800, '0,0');
-    setTimeout(sendCommandRed, 58292, 'Drop dino!');
-    setTimeout(sendSerial, 60000, '1,0');
-
     player.play({
-      path: './halloween_not5.1.wav',
+      path: './section1.wav',
       sync: true
     }).then(() => {
       io.emit('done');
-      loop();
+      section2();
     }).catch((error) => {
       console.error(error);
     });
   });
 }
+
+function section2() {
+  rl.question('Start section 2?', (answer) => {
+    setTimeout(sendCommand, 34245, '1');
+    setTimeout(sendCommand, 35245, '2');
+    setTimeout(sendCommand, 36245, '3');
+    setTimeout(sendSerial, 36245, '0,0');
+    setTimeout(sendCommandRed, 37245, 'Drop dino!');
+    setTimeout(sendSerial, 39245, '1,0');
+
+    player.play({
+      path: './section2.wav',
+      sync: true
+    }).then(() => {
+      io.emit('done');
+      section1();
+    }).catch((error) => {
+      console.error(error);
+    });
+  });
+}
+
 
 function sendCommand(arg) {
   console.log(colors.green('%s'), arg);
