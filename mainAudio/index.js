@@ -40,7 +40,6 @@ function section1() {
       path: './section1.wav',
       sync: true
     }).then(() => {
-      io.emit('done');
       section2();
     }).catch((error) => {
       console.error(error);
@@ -50,12 +49,12 @@ function section1() {
 
 function section2() {
   rl.question('Start section 2?', (answer) => {
-    setTimeout(sendCommand, 34245, '1');
-    setTimeout(sendCommand, 35245, '2');
-    setTimeout(sendCommand, 36245, '3');
-    setTimeout(sendSerial, 36245, '0,0');
-    setTimeout(sendCommandRed, 37245, 'Drop dino!');
-    setTimeout(sendSerial, 39245, '1,0');
+    setTimeout(sendCommand, 31245, '1');
+    setTimeout(sendCommand, 32245, '2');
+    setTimeout(sendCommand, 33245, '3');
+    setTimeout(sendSerial, 33245, '0,0');
+    setTimeout(sendCommandRed, 34245, 'Drop dino!');
+    setTimeout(sendSerial, 35245, '1,0');
 
     player.play({
       path: './section2.wav',
