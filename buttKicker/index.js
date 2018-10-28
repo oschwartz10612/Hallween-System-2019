@@ -7,10 +7,22 @@ socket.on('connect', function(){
   console.log('Connected!');
 });
 
-socket.on('start', function(data){
+socket.on('start1', function(data){
   console.log('Beginging buttKicker audio');
   player.play({
-    path: './buttKicker.wav',
+    path: './buttKicker1_not5.1.wav',
+    sync: true
+  }).then(() => {
+    console.log('Done...');
+  }).catch((error) => {
+    console.error(error);
+  });
+});
+
+socket.on('start2', function(data){
+  console.log('Beginging buttKicker audio');
+  player.play({
+    path: './buttKicker2_not5.1.wav',
     sync: true
   }).then(() => {
     console.log('Done...');

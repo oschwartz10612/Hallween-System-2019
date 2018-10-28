@@ -36,7 +36,7 @@ socket.on('disconnect', function(){
 function playBackround() {
   check = true;
   player.play({
-    path: './backround.wav',
+    path: './backround_not5.1.wav',
     sync: true
   }).then(() => {
     if (check) {
