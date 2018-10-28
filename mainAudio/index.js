@@ -17,7 +17,7 @@ io.on('connection', function(client){
   client.on('event', function(data){});
   client.on('disconnect', function(){});
 });
-server.listen(1800);
+server.listen(1900);
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -28,7 +28,7 @@ section1();
 
 function section1() {
   rl.question('Start section 1?', (answer) => {
-    io.emit('start');
+    io.emit('start1');
     player.stop();
     console.log('Playing...');
     setTimeout(sendCommand, 6455, '1');
@@ -37,7 +37,7 @@ function section1() {
     setTimeout(sendCommandRed, 9455, 'Slam window!');
 
     player.play({
-      path: './section1.wav',
+      path: './section1_not5.1.wav',
       sync: true
     }).then(() => {
       section2();
@@ -49,6 +49,7 @@ function section1() {
 
 function section2() {
   rl.question('Start section 2?', (answer) => {
+    io.emit('start2');
     setTimeout(sendCommand, 31245, '1');
     setTimeout(sendCommand, 32245, '2');
     setTimeout(sendCommand, 33245, '3');
@@ -57,7 +58,7 @@ function section2() {
     setTimeout(sendSerial, 35245, '1,0');
 
     player.play({
-      path: './section2.wav',
+      path: './section2_not5.1.wav',
       sync: true
     }).then(() => {
       io.emit('done');
